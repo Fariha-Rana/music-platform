@@ -1,5 +1,3 @@
-// Navbar.js
-
 import Link from "next/link";
 import Search from "./SearchBar";
 
