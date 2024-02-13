@@ -1,14 +1,13 @@
-// pages/index.js
+import React from "react";
+import Navbar from "@/components/Navbar";
+import SpotifyArtistInfo from "@/components/SpotifyArtistInfo";
 
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import SpotifyArtistInfo from '@/components/SpotifyArtistInfo';
 const Home = () => {
   return (
-  <>
-    <Navbar/>
-  <SpotifyArtistInfo/>
-  </>
+    <>
+      <Navbar />
+      <SpotifyArtistInfo />
+    </>
   );
 };
 

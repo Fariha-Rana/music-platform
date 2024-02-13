@@ -1,28 +1,29 @@
 "use client";
-import userAuthentication from "@/appwrite/authentication";
+import appwriteAuth from "@/utils/appwriteAuthentication";
 import useAuth from "@/context/useAuth";
-import { Button, Center } from "@chakra-ui/react";
+
 
 const LogoutPage = () => {
   const { setAuthStatus } = useAuth();
+
   async function _logOut() {
     try {
-      await userAuthentication.logOut();
+      await appwriteAuth.logOut();
       setAuthStatus(false);
       alert("Logout successful");
     } catch (error) {
-      console.error("Logout failed", error);
+      console.error("Logout failed", error?.message);
     }
   }
+
   return (
-   <Center mt={8} alignItems={"center"} justifyContent={"center"}>
-     <Button
-      colorScheme={"teal"}
+   <section  className="mt-8 align-middle justify-center">
+     <button className="text-teal-700"
       onClick={_logOut}
     >
       Log Out
-    </Button>
-   </Center>
+    </button>
+   </section>
   );
 };
 
