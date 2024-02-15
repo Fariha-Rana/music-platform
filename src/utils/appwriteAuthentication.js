@@ -8,8 +8,12 @@ client
 
 const account = new Account(client);
 
-export class AppwriteAuth {
-  async createAccount({ email, password, name }) {
+class AppwriteAuth {
+  constructor() {
+    this.userData = null;
+  }
+
+  async createAccount(email, password, name) {
     try {
       const userAccount = await account.create(
         ID.unique(),
@@ -18,7 +22,10 @@ export class AppwriteAuth {
         name
       );
       console.log(userAccount);
-      if (userAccount) return await this.login({ email, password });
+      if (userAccount) {
+        await this.login({ email, password });
+        return this.userData;
+      }
     } catch (err) {
       console.log(err);
       throw err;
@@ -28,19 +35,11 @@ export class AppwriteAuth {
   async login({ email, password }) {
     try {
       const loggedinUser = await account.createEmailSession(email, password);
-      return loggedinUser;
+      this.userData = loggedinUser;
+      return this.userData;
     } catch (error) {
       console.log(error);
       throw error;
-    }
-  }
-
-  async isLoggedIn() {
-    try {
-      const currentUser = await this.getCurrentUser();
-      return currentUser ? true : false;
-    } catch (error) {
-      console.log(error);
     }
   }
 
@@ -48,15 +47,21 @@ export class AppwriteAuth {
     try {
       await account.createAnonymousSession();
       await account.updateName(name);
-      const user = account.get();
-      return user;
+      this.userData = await account.get();
+      console.log(this.userData);
+      return this.userData;
     } catch (e) {}
   }
 
   async getCurrentUser() {
     try {
+      if (this.userData) {
+        return this.userData;
+      }
+
       const currentUser = await account.get();
-      return currentUser || null;
+      this.userData = currentUser || null;
+      return this.userData;
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +69,7 @@ export class AppwriteAuth {
 
   async logOut() {
     try {
+      this.userData = null;
       await account.deleteSession("current");
     } catch (error) {
       console.log(error);

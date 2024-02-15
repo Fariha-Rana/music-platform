@@ -5,7 +5,6 @@ import SpotifyArtistInfo from "@/components/SpotifyArtistInfo";
 const Home = () => {
   return (
     <>
-      <Navbar />
       <SpotifyArtistInfo />
     </>
   );
