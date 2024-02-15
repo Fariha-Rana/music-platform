@@ -1,15 +1,10 @@
 "use client";
 import appwriteAuth from "@/utils/appwriteAuthentication";
-import useAuth from "@/context/useAuth";
-
 
 const LogoutPage = () => {
-  const { setAuthStatus } = useAuth();
-
   async function _logOut() {
     try {
       await appwriteAuth.logOut();
-      setAuthStatus(false);
       alert("Logout successful");
     } catch (error) {
       console.error("Logout failed", error?.message);
