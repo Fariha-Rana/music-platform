@@ -13,6 +13,10 @@ class AppwriteAuth {
     this.userData = null;
   }
 
+  getUserData() {
+    return this.userData;
+  }
+  
   async createAccount(email, password, name) {
     try {
       const userAccount = await account.create(

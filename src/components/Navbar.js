@@ -4,7 +4,8 @@ import appwriteAuth from "@/utils/appwriteAuthentication";
 import LogoutPage from "@/components/logout";
 
 const Navbar = () => {
-  const userData = appwriteAuth.userData;
+  const userData = appwriteAuth.getUserData();
+
   return (
     <nav className="bg-gray-800 p-4 text-white font-mono">
       <ul className="flex justify-between ">
@@ -12,7 +13,7 @@ const Navbar = () => {
         <li>
           <Search />
         </li>
-        {userData ? (
+        {!userData ? (
           <div className="flex justify-end lg:space-x-4 max-[550px]:flex-col text-nowrap">
             <li className="underline">
               <Link href={"/login"}>Log in</Link>
