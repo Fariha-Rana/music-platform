@@ -12,13 +12,9 @@ const LogoutPage = () => {
   }
 
   return (
-   <section  className="mt-8 align-middle justify-center">
-     <button className="text-teal-700"
-      onClick={_logOut}
-    >
+    <button className="text-teal-700" onClick={_logOut}>
       Log Out
     </button>
-   </section>
   );
 };
 

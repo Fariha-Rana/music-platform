@@ -4,11 +4,11 @@ import appwriteAuth from "@/utils/appwriteAuthentication";
 import LogoutPage from "@/components/logout";
 
 const Navbar = () => {
-  const userData = appwriteAuth.getUserData();
+  const userData = appwriteAuth.isUserLoggedIn();
 
   return (
     <nav className="bg-gray-800 p-4 text-white font-mono">
-      <ul className="flex justify-between ">
+      <ul className="flex justify-between">
         <li>Home logo</li>
         <li>
           <Search />
@@ -23,16 +23,21 @@ const Navbar = () => {
             </li>
           </div>
         ) : (
-          <div className="flex justify-end lg:space-x-4 max-[550px]:flex-col text-nowrap">
-            <li className="underline">
-              <Link href={"/login"}>My Profile</Link>
-            </li>
+          <>
+            <div className="flex  flex-col text-nowrap ">
+              <li className="underline">
+                <Link href={"/login"}>My Profile</Link>
+              </li>
+              <li className="underline">
+                {" "}
+                <Link href={"/login"}>My Playlist</Link>
+              </li>
             <li className="underline">
               <LogoutPage />
             </li>
-          </div>
+            </div>
+          </>
         )}
-        {/* <li>My Playlist</li> */}
       </ul>
     </nav>
   );

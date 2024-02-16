@@ -16,7 +16,15 @@ class AppwriteAuth {
   getUserData() {
     return this.userData;
   }
-  
+
+  async isUserLoggedIn() {
+    const isUserData = await this.getCurrentUser();
+    if (isUserData) {
+      return this.userData;
+    }
+    return null
+  }
+
   async createAccount(email, password, name) {
     try {
       const userAccount = await account.create(
@@ -67,7 +75,7 @@ class AppwriteAuth {
       this.userData = currentUser || null;
       return this.userData;
     } catch (error) {
-      console.log(error);
+      // console.log(error, "getcccccccccccc");
     }
   }
 
