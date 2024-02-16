@@ -9,22 +9,6 @@ client
 const account = new Account(client);
 
 class AppwriteAuth {
-  constructor() {
-    this.userData = null;
-  }
-
-  getUserData() {
-    return this.userData;
-  }
-
-  async isUserLoggedIn() {
-    const isUserData = await this.getCurrentUser();
-    if (isUserData) {
-      return this.userData;
-    }
-    return null
-  }
-
   async createAccount(email, password, name) {
     try {
       const userAccount = await account.create(
@@ -33,13 +17,12 @@ class AppwriteAuth {
         password,
         name
       );
-      console.log(userAccount);
+
       if (userAccount) {
-        await this.login({ email, password });
-        return this.userData;
+        const data = await this.login({ email, password });
+        return data;
       }
     } catch (err) {
-      console.log(err);
       throw err;
     }
   }
@@ -47,10 +30,8 @@ class AppwriteAuth {
   async login({ email, password }) {
     try {
       const loggedinUser = await account.createEmailSession(email, password);
-      this.userData = loggedinUser;
-      return this.userData;
+      return loggedinUser;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -59,33 +40,25 @@ class AppwriteAuth {
     try {
       await account.createAnonymousSession();
       await account.updateName(name);
-      this.userData = await account.get();
-      console.log(this.userData);
-      return this.userData;
+      const data = await account.get();
+      return data;
     } catch (e) {}
   }
 
   async getCurrentUser() {
     try {
-      if (this.userData) {
-        return this.userData;
-      }
-
       const currentUser = await account.get();
-      this.userData = currentUser || null;
-      return this.userData;
+      console.log("-------------------------------------------------------------------")
+      return currentUser || null;
     } catch (error) {
-      // console.log(error, "getcccccccccccc");
+      return null;
     }
   }
 
   async logOut() {
     try {
-      this.userData = null;
       await account.deleteSession("current");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 }
 

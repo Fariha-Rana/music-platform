@@ -9,8 +9,7 @@ function Search() {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // await getAccessToken()
-    await getArtistDetail()
+    // await getArtistDetail()
   };
 
   return (

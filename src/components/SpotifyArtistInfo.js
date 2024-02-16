@@ -1,10 +1,21 @@
 import { getArtistDetail } from "@/utils/getArtistDetails";
+import { getAccessToken } from "@/utils/getAccessToken";
+
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 
+import { unstable_cache } from "next/cache";
+
+export const accessToken = unstable_cache(getAccessToken, ["access-token"]);
+
+const _getArtistDetail = unstable_cache(
+  async (accessToken) => getArtistDetail(accessToken),
+  ["artist-deatils"]
+);
+
 const SpotifyArtistInfo = async () => {
-  const artistInfo = await getArtistDetail();
+  const artistInfo = await _getArtistDetail(accessToken);
   const {
     external_urls,
     followers,

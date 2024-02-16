@@ -1,7 +1,10 @@
 "use client";
 import appwriteAuth from "@/utils/appwriteAuthentication";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import useAuth from "@/context/useAuth";
+
 import Link from "next/link";
 
 const Login = () => {
@@ -9,12 +12,15 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [passowrd, setPassowrd] = useState("");
   const [name, setName] = useState("");
+
   const router = useRouter();
+  const { setUserData } = useAuth();
 
   const _signup = async (e) => {
     e.preventDefault();
     try {
-      await appwriteAuth.createAccount(email, passowrd, name);
+      const data = await appwriteAuth.createAccount(email, passowrd, name);
+      setUserData(data);
       router.replace(`/`);
     } catch (error) {
       setError(error.message);

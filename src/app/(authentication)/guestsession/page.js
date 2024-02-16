@@ -2,16 +2,18 @@
 import appwriteAuth from "@/utils/appwriteAuthentication";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
+import useAuth from "@/context/useAuth";
 const Login = () => {
   const [error, setError] = useState("");
   const [name, setName] = useState("");
+  const {setUserData} = useAuth()
   const router = useRouter();
 
   const _loginAsGuest = async (e) => {
     e.preventDefault();
     try {
-      await appwriteAuth._createAnonymousSession(name);
+       const data = await appwriteAuth._createAnonymousSession(name);
+       setUserData(data)
       router.replace(`/`);
     } catch (error) {
       setError(error.message);

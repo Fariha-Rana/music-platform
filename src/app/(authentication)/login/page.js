@@ -1,19 +1,24 @@
 "use client";
 import appwriteAuth from "@/utils/appwriteAuthentication";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Link from "next/link";
+import useAuth from "@/context/useAuth";
 
-const Login = () => {
-  const [error, setError] = useState("");
-  const [email, setEmail] = useState("");
-  const [passowrd, setPassowrd] = useState("");
-  const router = useRouter();
+import Link from "next/link";
+  
+  const Login = () => {
+    const [error, setError] = useState("");
+    const [email, setEmail] = useState("");
+    const [passowrd, setPassowrd] = useState("");
+    const router = useRouter();
+    const {setUserData} = useAuth()
 
   const _login = async (e) => {
     e.preventDefault();
     try {
-      await appwriteAuth.login(email, passowrd);
+      const data = await appwriteAuth.login(email, passowrd);
+      setUserData(data)
       router.replace(`/`);
     } catch (error) {
       setError(error.message);
