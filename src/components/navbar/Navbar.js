@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 import Search from "./SearchBar";
-import LogoutPage from "@/components/logout";
+import LogoutPage from "@/components/navbar/logout";
 import { SlPlaylist } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 

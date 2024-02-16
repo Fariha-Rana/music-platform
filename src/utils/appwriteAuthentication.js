@@ -48,7 +48,6 @@ class AppwriteAuth {
   async getCurrentUser() {
     try {
       const currentUser = await account.get();
-      console.log("-------------------------------------------------------------------")
       return currentUser || null;
     } catch (error) {
       return null;
