@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import AddToProfile from "./AddToProfile";
 function PlaylistLayout({featuredPlaylist}) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-4">
@@ -20,6 +20,7 @@ function PlaylistLayout({featuredPlaylist}) {
         <Link href={playlist.external_urls.spotify} className="text-blue-500 mt-2 block">
           <b>Open in Spotify</b>
         </Link>
+        <AddToProfile/>
       </div>
     ))}
   </div>

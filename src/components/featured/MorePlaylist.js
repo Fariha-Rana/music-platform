@@ -22,7 +22,6 @@ function MorePlaylist({ accessToken, paginatedUrl }) {
     }
   };
 
-  console.log(featuredPlaylists);
   return (
     <div className="mt-3">
       <PlaylistLayout featuredPlaylist={featuredPlaylists} />

@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Search from "./SearchBar";
+
 import LogoutPage from "@/components/navbar/logout";
+
 import { SlPlaylist } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 
@@ -13,7 +14,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 p-4 text-white font-mono">
-      <ul className="flex justify-between  items-center mx-4">
+      <ul className="flex justify-around  items-center mx-4">
         <li >
           <Link
            href={"/"}>
@@ -22,13 +23,11 @@ const Navbar = () => {
               height={20}
               alt="logo"
               src="/next.svg"
-              className="w-20 h-auto"
+              className="w-20 h-auto "
             />
           </Link>
         </li>
-        <li>
-          <Search />
-        </li>
+  
         {!userData ? (
           <div className="flex justify-end lg:space-x-4 max-[550px]:flex-col text-nowrap">
             <li className="underline">
