@@ -1,5 +1,5 @@
 
-import FeaturePlaylist from "@/components/fetaured/FeaturePlaylist";
+import FeaturePlaylist from "@/components/featured/FeaturePlaylist";
 const Home = () => {
   return (
     <>
