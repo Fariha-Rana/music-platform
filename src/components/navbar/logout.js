@@ -10,7 +10,6 @@ const LogoutPage = () => {
       setUserData(null);
       alert("Logout successful");
     } catch (error) {
-      console.error("Logout failed", error?.message);
     }
   }
 

@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import Link from "next/link";
-
+import Image from "next/image";
 import Search from "./SearchBar";
 import LogoutPage from "@/components/navbar/logout";
 import { SlPlaylist } from "react-icons/sl";
@@ -9,12 +9,23 @@ import { CgProfile } from "react-icons/cg";
 import useAuth from "@/context/useAuth";
 
 const Navbar = () => {
-  const {userData} = useAuth()
- 
+  const { userData } = useAuth();
+
   return (
     <nav className="bg-gray-800 p-4 text-white font-mono">
-      <ul className="flex justify-between">
-        <li>Home logo</li>
+      <ul className="flex justify-between  items-center mx-4">
+        <li >
+          <Link
+           href={"/"}>
+            <Image
+              width={20}
+              height={20}
+              alt="logo"
+              src="/next.svg"
+              className="w-20 h-auto"
+            />
+          </Link>
+        </li>
         <li>
           <Search />
         </li>
@@ -33,7 +44,7 @@ const Navbar = () => {
               <li className="underline">
                 {" "}
                 <Link href={"/myplaylist"}>
-                  <SlPlaylist size={"25px"} />
+                  <SlPlaylist size={"20px"} />
                 </Link>
               </li>
               <li className="underline">

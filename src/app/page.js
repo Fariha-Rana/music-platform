@@ -1,11 +1,9 @@
-import React from "react";
-import Navbar from "@/components/navbar/Navbar";
-import SpotifyArtistInfo from "@/components/SpotifyArtistInfo";
 
+import FeaturePlaylist from "@/components/fetaured/FeaturePlaylist";
 const Home = () => {
   return (
     <>
-      <SpotifyArtistInfo />
+      <FeaturePlaylist/>
     </>
   );
 };

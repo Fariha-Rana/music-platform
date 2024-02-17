@@ -1,6 +1,5 @@
 "use client";
-import { getAccessToken } from "@/utils/getAccessToken";
-import { getArtistDetail } from "@/utils/getArtistDetails";
+
 import { useRouter } from "next/navigation";
 
 function Search() {
