@@ -1,12 +1,15 @@
 "use server";
+import { unstable_cache } from "next/cache";
+import { getAccessToken } from "./getAccessToken";
 
+const _getAccessToken = unstable_cache(getAccessToken, ["access-token"], {
+  revalidate: 1200,
+});
 const tokenEndpoint = "https://api.spotify.com/v1/browse/featured-playlists";
 
-export async function getFeaturePlaylist(accessToken, offset = 0, limit = 20) {
+export async function getFeaturePlaylist() {
   try {
-    const queryParams = `?offset=${offset}&limit=${limit}&locale=*`;
-    const endpointWithParams = `${tokenEndpoint}?${queryParams}`;
-
+    const accessToken = await _getAccessToken();
     const requestOptions = {
       method: "GET",
       headers: {
@@ -14,12 +17,11 @@ export async function getFeaturePlaylist(accessToken, offset = 0, limit = 20) {
       },
     };
 
-    const response = await fetch(endpointWithParams, requestOptions);
+    const response = await fetch(tokenEndpoint, requestOptions);
     const featuredPlaylistResponse = await response.json();
     return featuredPlaylistResponse;
   } catch (error) {
-    console.log(error.message)
-    throw error; 
+    console.log(error.message);
+    throw error;
   }
 }
-

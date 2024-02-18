@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
 import PlaylistLayout from "./PlaylistLayout";
-import { getMoreFeaturePlaylist } from "./getFeaturedPlaylists";
+import { HOST_Name } from "@/utils/envVariables";
 
-function MorePlaylist({ accessToken, paginatedUrl }) {
-  const [featuredPlaylists, setFeaturedPlaylists] = useState(null);
+function MorePlaylist({ paginatedUrl }) {
+  const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
   const [_paginatedUrl, setpaginatedUrl] = useState(paginatedUrl);
   const [loading, setLoading] = useState(false);
 
@@ -12,9 +12,13 @@ function MorePlaylist({ accessToken, paginatedUrl }) {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await getMoreFeaturePlaylist(_paginatedUrl, accessToken);
-      setFeaturedPlaylists(response);
-      setpaginatedUrl(response.playlists.next);
+      const response = await fetch(`${HOST_Name}/api/?url=${_paginatedUrl}`);
+      const { data } = await response.json();
+      setFeaturedPlaylists((prevState) => [
+        ...prevState,
+        ...data?.playlists?.items,
+      ]);
+      setpaginatedUrl(data?.playlists?.next);
     } catch (error) {
       console.error("Error fetching playlists:", error.message);
     } finally {
@@ -22,6 +26,7 @@ function MorePlaylist({ accessToken, paginatedUrl }) {
     }
   };
 
+  console.log(featuredPlaylists);
   return (
     <div className="mt-3">
       <PlaylistLayout featuredPlaylist={featuredPlaylists} />
@@ -29,13 +34,9 @@ function MorePlaylist({ accessToken, paginatedUrl }) {
         <button
           type="submit"
           onClick={fetchPlaylists}
-          disabled={!featuredPlaylists?.playlists?.next}
+          disabled={!_paginatedUrl}
         >
-          {loading
-            ? "loading"
-            : featuredPlaylists?.playlists?.next
-            ? "see more"
-            : "no more found"}
+          {loading ? "loading" : _paginatedUrl ? "see more" : "no more found"}
         </button>
       </div>
     </div>
