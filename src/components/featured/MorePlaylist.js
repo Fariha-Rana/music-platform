@@ -3,8 +3,8 @@ import { useState } from "react";
 import PlaylistLayout from "./PlaylistLayout";
 import { HOST_Name } from "@/utils/envVariables";
 
-function MorePlaylist({ paginatedUrl }) {
-  const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
+function MorePlaylist({ paginatedUrl, featuredPlaylist }) {
+  const [featuredPlaylists, setFeaturedPlaylists] = useState(featuredPlaylist);
   const [_paginatedUrl, setpaginatedUrl] = useState(paginatedUrl);
   const [loading, setLoading] = useState(false);
 
@@ -28,9 +28,8 @@ function MorePlaylist({ paginatedUrl }) {
 
   console.log(featuredPlaylists);
   return (
-    <div className="mt-3">
-      <PlaylistLayout featuredPlaylist={featuredPlaylists} />
-      <div className="flex text-center justify-center items-center p-2 text-lg underline">
+    <div className="">
+      <div className="flex text-center justify-end items-center p-2 text-lg underline">
         <button
           type="submit"
           onClick={fetchPlaylists}
@@ -39,6 +38,7 @@ function MorePlaylist({ paginatedUrl }) {
           {loading ? "loading" : _paginatedUrl ? "see more" : "no more found"}
         </button>
       </div>
+      <PlaylistLayout featuredPlaylist={featuredPlaylists} />
     </div>
   );
 }
