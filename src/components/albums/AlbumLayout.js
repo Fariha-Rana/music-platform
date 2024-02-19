@@ -21,7 +21,7 @@ function AlbumLayout({ moreAlbums }) {
           <Link href={albums?.external_urls?.spotify} className="text-green-500 mt-2 block underline" target="_blank" rel="noopener noreferrer" >
             <b>Open in Spotify</b>
           </Link>  
-          <Link href={"/newalbums/" + albums?.id} className="text-blue-500 mt-2 block underline" >
+          <Link href={"/newalbums/" + albums?.id + "?imageurl=" + albums.images[0]?.url} className="text-blue-500 mt-2 block underline" >
             <b>preview</b>
           </Link>
           {/* <AddToProfile /> */}
