@@ -5,7 +5,7 @@ import AddToProfile from "./AddToProfile";
 function PlaylistLayout({ featuredPlaylist }) {
   return (
     <div className="flex overflow-x-auto">
-       <h1 style={{ textShadow: '2px 2px 4px rgba(100, 100, 230, 0.9)' }} className="max-[801px]:hidden flex text-center text-3xl p-3 justify-center items-center font-mono">Popular Playlist</h1>
+       <h1 style={{ textShadow: '2px 2px 4px rgba(100, 100, 230, 0.9)' }} className="w-80  max-[801px]:hidden flex text-center text-3xl p-3 justify-center items-center font-mono">Popular Playlist</h1>
       {featuredPlaylist?.map((playlist) => (
         <div key={playlist.id} className="flex flex-col justify-center items-center flex-shrink-0 bg-gray-700 p-1 rounded-lg m-2 w-56 ">
           <h2 className="text-lg font-bold py-1 ">{playlist.name}</h2>
