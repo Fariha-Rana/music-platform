@@ -5,9 +5,8 @@ import { getAccessToken } from "./getAccessToken";
 const _getAccessToken = unstable_cache(getAccessToken, ["access-token"], {
   revalidate: 1200,
 });
-const tokenEndpoint = "https://api.spotify.com/v1/browse/featured-playlists";
 
-export async function getFeaturePlaylist() {
+export async function getDataFromSpotify(tokenEndpoint) {
   try {
     const accessToken = await _getAccessToken();
     const requestOptions = {

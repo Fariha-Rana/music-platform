@@ -20,22 +20,21 @@ function MorePlaylist({ paginatedUrl, featuredPlaylist }) {
       ]);
       setpaginatedUrl(data?.playlists?.next);
     } catch (error) {
-      console.error("Error fetching playlists:", error.message);
+      // console.error("Error fetching playlists:", error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  console.log(featuredPlaylists);
   return (
-    <div className="">
+    <div className="p-4 ">
       <div className="flex text-center justify-end items-center p-2 text-lg underline">
         <button
           type="submit"
           onClick={fetchPlaylists}
           disabled={!_paginatedUrl}
         >
-          {loading ? "loading" : _paginatedUrl ? "see more" : "no more found"}
+          {loading ? "loading" : _paginatedUrl ? "see more" : ""}
         </button>
       </div>
       <PlaylistLayout featuredPlaylist={featuredPlaylists} />

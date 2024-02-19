@@ -8,7 +8,6 @@ const _getAccessToken = unstable_cache(getAccessToken, ["access-token"], {
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const playlistId = searchParams.get("playlistId");
-  console.log(playlistId)
   const accessToken = await _getAccessToken();
   try {
     const requestOptions = {
