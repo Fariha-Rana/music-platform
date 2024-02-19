@@ -5,7 +5,7 @@ import Image from "next/image";
 function AlbumLayout({ moreAlbums }) {
   return (
      <div className="flex  overflow-x-auto">
-       <h1 style={{ textShadow: '2px 2px 4px rgba(100, 100, 230, 0.9)' }} className="w-80 max-[801px]:hidden flex text-center text-3xl p-3 justify-center items-center font-mono">New <br/> Albums</h1>
+       <h1 style={{ textShadow: '2px 2px 4px rgba(100, 100, 230, 0.9)' }} className="w-80 mx-8  max-[801px]:hidden flex text-center text-3xl p-3 justify-center items-center font-mono">New Albums</h1>
       {moreAlbums?.map((albums) => (
         <div key={albums.id} className="flex flex-col justify-center items-center flex-shrink-0 bg-gray-700 p-1 rounded-lg m-2 w-56 ">
           <h2 className="text-lg font-bold py-1 ">{albums?.name}</h2>
