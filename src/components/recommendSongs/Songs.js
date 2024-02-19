@@ -27,7 +27,7 @@ async function Songs() {
         {tracks.map((track) => (
           <div
             key={track.id}
-            className={`flex flex-col items-center flex-shrink-0 bg-gray-700 m-2 pt-4 rounded-lg  w-60 text-center pb-4`}
+            className={`flex flex-col items-center flex-shrink-0 bg-gray-700 m-2 pt-4 rounded-lg  w-60 text-center p-4`}
           >
 
            <Image
@@ -42,7 +42,7 @@ async function Songs() {
               by<span className="text-gray-400"> {track.artists[0].name}</span>
             </p>
             {track.preview_url && (
-          <audio controls className="w-full px-6 mt-4 h-8">
+          <audio controls className="w-full  mt-4 ">
             <source src={track.preview_url} type="audio/mp3" />
           </audio>
         )}
