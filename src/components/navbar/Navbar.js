@@ -5,7 +5,7 @@ import Image from "next/image";
 import LogoutPage from "@/components/navbar/logout";
 
 import { SlPlaylist } from "react-icons/sl";
-import { IoMusicalNotesOutline } from "react-icons/io5";
+
 
 import useAuth from "@/context/useAuth";
 
@@ -45,14 +45,6 @@ const Navbar = () => {
                   <span title="my playlist">
   
                     <SlPlaylist size={"20px"} />
-                  </span>
-                </Link>
-              </li>
-              <li className="underline">
-                <Link href={"/mysongs"}>
-                  <span title="my songs">
-  
-                    <IoMusicalNotesOutline size={"25px"} />
                   </span>
                 </Link>
               </li>

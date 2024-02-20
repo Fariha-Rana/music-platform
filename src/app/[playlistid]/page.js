@@ -37,13 +37,6 @@ function page() {
             Artists: {track.track.artists.map(artist => artist.name).join(', ')}
           </p>
           <p className="text-sm text-gray-600 my-2 ">Album: {track.track.album.name}</p>
-            {track.track.preview_url ? (
-          <audio controls className="w-full my-2 h-8">
-              <source src={track.track.preview_url} type="audio/mp3" />
-          </audio>
-            ) : (
-              <p className="h-8 text-sm">No preview available</p>
-            )}
           <div className="flex space-x-2 my-2 flex-col text-center">
             <span className="text-sm  text-green-500">
               Listen on Spotify: {' '}
@@ -58,6 +51,14 @@ function page() {
               </Link>
             </span>
           </div>
+            {track.track.preview_url ? (
+          <audio controls className="w-full my-2 h-8">
+              <source src={track.track.preview_url} type="audio/mp3" />
+          </audio>
+            ) : (
+              <p className="h-8 text-sm">No preview available</p>
+            )}
+        
         </div>
       ))}
     </div>
