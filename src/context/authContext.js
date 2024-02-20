@@ -3,18 +3,34 @@ import { createContext, useState, useEffect } from "react";
 import appwriteAuth from "@/utils/appwriteAuthentication";
 export const AuthContext = createContext(null);
 
-import { cache } from "react";
-
-export const getUserData = cache(appwriteAuth.getCurrentUser);
+const response = async () => {
+  return await appwriteAuth.getCurrentUser();
+};
 
 export default function AuthProvider({ children }) {
   const [userData, setUserData] = useState(null);
+
   useEffect(() => {
-    const data = getUserData();
-    if (data) {
-      setUserData(data);
+    async function checkLogInStatus() {
+      try {
+        const cachedUserData = localStorage.getItem("userData");
+        if (cachedUserData) {
+          setUserData(JSON.parse(cachedUserData));
+        } else {
+          const fetchedUserData = await userAuth.getCurrentUser();
+
+          if (fetchedUserData) {
+            localStorage.setItem("userData", JSON.stringify(fetchedUserData));
+            setUserData(fetchedUserData);
+          }
+        }
+      } catch (err) {
+        // console.error("Error in provider:", err);
+      }
     }
+    checkLogInStatus();
   }, []);
+
   return (
     <AuthContext.Provider value={{ userData, setUserData }}>
       {children}

@@ -4,9 +4,9 @@ import Songs from "@/components/recommendSongs/Songs";
 const Home = () => {
   return (
     <section className="h-full">
-      <Songs />
       <FeaturePlaylist />
       <NewReleases />
+      <Songs />
     </section>
   );
 };

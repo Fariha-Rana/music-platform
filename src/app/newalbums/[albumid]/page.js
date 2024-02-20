@@ -4,12 +4,13 @@ import { HOST_Name } from "@/utils/envVariables";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import AlbumAddtoPlaylist from "../AlbumAddtoPlaylist";
 
 function page() {
   const [albums, setAlbums] = useState(null);
 
-  const searchParams = useSearchParams()
-  const albumImage = searchParams.get("imageurl")
+  const searchParams = useSearchParams();
+  const albumImage = searchParams.get("imageurl");
   let _albumId = usePathname();
   const albumId = _albumId.replace(/^\/newalbums\//, "");
 
@@ -28,11 +29,11 @@ function page() {
   }, []);
 
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4  bg-gray-200">
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4  bg-gray-200 ">
       {albums?.map((album, index) => (
         <div
           key={index}
-          className="p-4 bg-gray-800 text-gray-300 shadow-md rounded-md flex flex-col justify-center items-center"
+          className="p-4 bg-gray-800 text-gray-300 shadow-md rounded-md flex flex-col justify-between h-full items-center"
         >
           <Image
             width={400}
@@ -44,8 +45,7 @@ function page() {
           />
           <p className="font-bold text-lg">{album?.name}</p>
           <p className="text-sm text-gray-600 my-2">
-            Artists:{" "}
-            {album?.artists?.map((artist) => artist?.name).join(", ")}
+            Artists: {album?.artists?.map((artist) => artist?.name).join(", ")}
           </p>
 
           {album?.preview_url ? (
@@ -55,29 +55,19 @@ function page() {
           ) : (
             <p className="h-8 text-sm">No preview available</p>
           )}
-          <div className="flex space-x-2 my-2 flex-col text-center">
-            <span className="text-sm  text-green-500">
-              Listen on Spotify:{" "}
-              <Link
-                href={album?.external_urls?.spotify || "/"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Open Link
-              </Link>
-            </span>
-            <span className="text-sm text-green-500">
-              See the full Album:{" "}
-              <Link
-                href={album?.external_urls?.spotify || "/"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Open Link
-              </Link>
-            </span>
+          <div className="flex justify-between gap-4 items-center mt-4">
+          <span className="text-sm  text-green-500">
+            Listen on Spotify:{" "}
+            <Link
+              href={album?.external_urls?.spotify || "/"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Open Link
+            </Link>
+          </span>
+            <AlbumAddtoPlaylist musicData={album} imageUrl={albumImage} />
           </div>
         </div>
       ))}

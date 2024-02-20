@@ -6,7 +6,6 @@ import LogoutPage from "@/components/navbar/logout";
 
 import { SlPlaylist } from "react-icons/sl";
 
-
 import useAuth from "@/context/useAuth";
 
 const Navbar = () => {
@@ -41,11 +40,8 @@ const Navbar = () => {
           <>
             <div className="flex justify-evenly items-center w-max gap-6">
               <li className="underline">
-                <Link href={"/myplaylist"} title="my playlist">
-                  <span title="my playlist">
-  
-                    <SlPlaylist size={"20px"} />
-                  </span>
+                <Link href={"/mysongs"} title="my songs">
+                  <SlPlaylist size={"20px"} />
                 </Link>
               </li>
               <li className="underline border border-gray-300 p-2 rounded-lg">

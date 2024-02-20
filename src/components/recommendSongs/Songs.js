@@ -24,31 +24,31 @@ async function Songs() {
           {" "}
           Recommended songs
         </h1>
-        {tracks.map((track) => (
+        {tracks?.map((track) => (
           <div
-            key={track.id}
-            className={`flex flex-col items-center flex-shrink-0 bg-gray-700 m-2 pt-4 rounded-lg  w-60 text-center p-4`}
+            key={track?.id}
+            className={`flex flex-col justify-center items-center flex-shrink-0 bg-gray-700 m-2 pt-4 rounded-lg  w-64 text-center p-4`}
           >
 
            <Image
               height={800}
               width={800}
-              src={track.album.images[0].url}
-              alt={track.name}
+              src={track?.album?.images[0]?.url}
+              alt={track?.name}
               className="w-40 h-auto object-cover mb-1"
             />
-            <h2 className="text-sm font-semibold p-1 ">{track.name}</h2>
+            <h2 className="text-sm font-semibold p-1 ">{track?.name}</h2>
             <p className="text-sm text-gray-500 p-1">
-              by<span className="text-gray-400"> {track.artists[0].name}</span>
+              by<span className="text-gray-400"> {track?.artists[0].name}</span>
             </p>
-            {track.preview_url && (
-          <audio controls className="w-full  mt-4 ">
-            <source src={track.preview_url} type="audio/mp3" />
-          </audio>
-        )}
-        <Link href={track?.external_urls?.spotify} className="text-green-500 mt-2 block underline" target="_blank" rel="noopener noreferrer" >
+            <Link href={track?.external_urls?.spotify} className="text-green-500 mt-2 block underline" target="_blank" rel="noopener noreferrer" >
             <b>Open in Spotify</b>
           </Link>  
+            {track?.preview_url ? (
+          <audio controls className="h-8  w-56 mt-8">
+            <source src={track?.preview_url} type="audio/mp3" />
+          </audio>
+        ) : (<p className="h-16"></p>)}
           </div>
         ))}
       </div>

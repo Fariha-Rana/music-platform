@@ -1,10 +1,10 @@
 import { Client, Account, ID } from "appwrite";
-
+import { APPWRITE_PROJECT_ID } from "./envVariables";
 export const client = new Client();
 
 client
   .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID);
+  .setProject(APPWRITE_PROJECT_ID);
 
 const account = new Account(client);
 
