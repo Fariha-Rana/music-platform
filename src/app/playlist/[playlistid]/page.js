@@ -13,11 +13,15 @@ function page() {
   const playlistId = _playlistId.replace(/^\/playlist\//, "");
 
   const fetchPlaylist = async () => {
+  try {
     const response = await fetch(
       `${HOST_Name}/playlist/${playlistId}/api/?playlistId=${playlistId}`
     );
     const { data } = await response.json();
     setTracks(data.items);
+  } catch (error) {
+    alert("an error occured, please revisit page")
+  }
   };
 
   useEffect(() => {

@@ -19,7 +19,6 @@ function page() {
   async function get() {
     const _data = await getUserPlaylist(userid);
     setData(_data);
-    console.log(_data);
   }
 
   useEffect(() => {

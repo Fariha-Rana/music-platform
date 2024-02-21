@@ -35,7 +35,7 @@ function MoreReleasedAlbums({ paginatedUrl, moreAlbums }) {
           onClick={fetchalbums}
           disabled={!_paginatedUrl}
         >
-          {loading ? "loading" : _paginatedUrl ? "see more" : " "}
+          {loading ? "loading" : _paginatedUrl ? "Load more" : " "}
         </button>
       </div>
       <AlbumLayout moreAlbums={_moreAlbums} />

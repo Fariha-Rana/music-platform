@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-// import AddToProfile from "./AddToProfile";
 
 function AlbumLayout({ moreAlbums }) {
   return (
@@ -24,7 +23,6 @@ function AlbumLayout({ moreAlbums }) {
           <Link href={"/newalbums/" + albums?.id + "?imageurl=" + albums.images[0]?.url} className="text-blue-500 mt-2 block underline" >
             <b>preview</b>
           </Link>
-          {/* <AddToProfile /> */}
         </div>
       ))}
     </div>

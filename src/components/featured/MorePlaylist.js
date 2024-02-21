@@ -34,7 +34,7 @@ function MorePlaylist({ paginatedUrl, featuredPlaylist }) {
           onClick={fetchPlaylists}
           disabled={!_paginatedUrl}
         >
-          {loading ? "loading" : _paginatedUrl ? "see more" : ""}
+          {loading ? "loading" : _paginatedUrl ? "Load more" : ""}
         </button>
       </div>
       <PlaylistLayout featuredPlaylist={featuredPlaylists} />

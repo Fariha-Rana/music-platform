@@ -26,9 +26,11 @@ function PlaylistAddToPlaylist({ musicData }) {
     }
 
     try {
-      await userSavedData.saveMusicinUserPlaylist(data, userData.$id);
       alert("added");
-    } catch (error) {}
+      await userSavedData.saveMusicinUserPlaylist(data, userData.$id);
+    } catch (error) {
+      alert("an error occured, please try again");
+    }
   }
   return (
       <button

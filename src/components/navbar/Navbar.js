@@ -28,7 +28,7 @@ const Navbar = () => {
         </li>
 
         {!userData ? (
-          <div className="flex justify-end lg:space-x-4 max-[550px]:flex-col text-nowrap">
+          <div className="flex justify-end  sm:space-x-4 max-[550px]:flex-col text-nowrap">
             <li className="underline">
               <Link href={"/login"}>log in</Link>
             </li>
@@ -38,8 +38,8 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <div className="flex  gap-x-4 justify-around items-center w-max ">
-              <li className="underline mx-4">
+            <div className="flex  sm:gap-x-4 justify-around items-center w-max ">
+              <li className="underline">
                 <Link href={"/myplaylist"} aria-disabled={!userData}  title="my songs">
                   <SlPlaylist size={"20px"} />
                 </Link>
