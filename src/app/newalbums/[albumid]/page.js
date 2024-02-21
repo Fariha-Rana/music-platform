@@ -33,7 +33,7 @@ function page() {
     return <Loader />;
   }
   return (
-    <div className="flex flex-col font-sans mt-24 lg:mt-16 mb-8 min-h-full">
+    <div className="flex flex-col font-sans mt-24 lg:mt-16 mb-8 min-h-screen">
       <div className="rounded-md shadow-md flex flex-col h-full gap-4 w-full">
       <h1 className="text-center text-2xl text-white font-serif">
         Album Preview
