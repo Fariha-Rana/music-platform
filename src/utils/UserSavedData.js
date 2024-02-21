@@ -12,7 +12,8 @@ class UserSavedData {
         APPWRITE_DATABASE_ID,
         APPWRITE_COLLECTION_ID,
         doc_id
-      );
+        );
+        console.log(response)
       return response;
     } catch (error) {
       return null;

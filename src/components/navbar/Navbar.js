@@ -40,7 +40,7 @@ const Navbar = () => {
           <>
             <div className="flex justify-evenly items-center w-max gap-6">
               <li className="underline">
-                <Link href={"/mysongs"} title="my songs">
+                <Link href={"/myplaylist"} title="my songs">
                   <SlPlaylist size={"20px"} />
                 </Link>
               </li>
