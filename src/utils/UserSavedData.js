@@ -34,8 +34,6 @@ class UserSavedData {
   }
 
   async saveMusicinUserPlaylist(data, DOC_ID) {
-    // console.log(data);
-    // return;
     try {
       let isExistingData = await this.existingDoc(DOC_ID);
 
@@ -57,7 +55,7 @@ class UserSavedData {
         );
       } else {
         const permissions = [Permission.write(Role.users())];
-        const response = await database.createDocument(
+        await database.createDocument(
           APPWRITE_DATABASE_ID,
           APPWRITE_COLLECTION_ID,
           DOC_ID,
@@ -75,46 +73,8 @@ class UserSavedData {
         );
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return [];
-    }
-  }
-
-  async removeCartorWishlistItem(DOC_ID, data) {
-    try {
-      let isExistingData = await this.existingDoc(COL_ID, DOC_ID);
-      const index = isExistingData.image.indexOf(data.image);
-      if (index !== -1) {
-        const filteredImage = isExistingData.image.filter(
-          (_, i) => i !== index
-        );
-        const filteredPrice = isExistingData.price.filter(
-          (_, i) => i !== index
-        );
-        const filteredInCart = isExistingData.inCart.filter(
-          (_, i) => i !== index
-        );
-        const filteredInWishlist = isExistingData.inWishlist.filter(
-          (_, i) => i !== index
-        );
-
-        const response = await database.updateDocument(
-          DATABASE_ID,
-          COL_ID,
-          DOC_ID,
-          {
-            image: filteredImage,
-            price: filteredPrice,
-            inCart: filteredInCart,
-            inWishlist: filteredInWishlist,
-          }
-        );
-        console.log(response);
-      } else {
-        console.log("Image not found in the array");
-      }
-    } catch (error) {
-      console.log(error);
     }
   }
 }

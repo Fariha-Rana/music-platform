@@ -3,10 +3,6 @@ import { createContext, useState, useEffect } from "react";
 import appwriteAuth from "@/utils/appwriteAuthentication";
 export const AuthContext = createContext(null);
 
-const response = async () => {
-  return await appwriteAuth.getCurrentUser();
-};
-
 export default function AuthProvider({ children }) {
   const [userData, setUserData] = useState(null);
 
