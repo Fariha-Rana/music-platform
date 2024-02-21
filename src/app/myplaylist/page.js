@@ -30,8 +30,8 @@ function page() {
     return <Loader />;
   }
   return (
-    <div className="flex flex-colfont-sans py-8 min-h-full">
-      <div className="rounded-md shadow-md flex flex-colgap-4 w-full">
+    <div className="flex flex-col font-sans mt-24 lg:mt-16 mb-8 min-h-full">
+      <div className="rounded-md shadow-md flex flex-col h-full gap-4 w-full">
         <h1 className="text-center text-2xl text-white font-serif">
           My preview Playlist
         </h1>
@@ -49,7 +49,7 @@ function page() {
                 className="w-auto max-[550px]:w-full max-[550px]:h-auto  h-20 object-cover rounded-md"
               />
             </div>
-            <div className="flex flex-col  min-[551px]:h-20 items-center justify-center text-center">
+            <div className="flex flex-col min-[551px]:w-80 min-[551px]:h-20 items-center justify-center text-center">
               <h3 className="text-sm text-wrap">
                 <b>Title:</b> {song}
               </h3>

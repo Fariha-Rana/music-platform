@@ -6,10 +6,12 @@ const LogoutPage = () => {
   const { setUserData } = useAuth();
   async function _logOut() {
     try {
+      alert("Logout successful");
       await appwriteAuth.logOut();
       setUserData(null);
-      alert("Logout successful");
+      localStorage.removeItem("userData");
     } catch (error) {
+      alert("could not Log out, try again please ");
     }
   }
 

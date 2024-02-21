@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 p-4 text-white font-mono">
-      <ul className="flex justify-around  items-center mx-4">
+      <ul className="flex justify-between  items-center mx-4">
         <li>
           <Link href={"/"}>
             <Image
@@ -38,9 +38,9 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <div className="flex justify-evenly items-center w-max gap-6">
-              <li className="underline">
-                <Link href={"/myplaylist"} title="my songs">
+            <div className="flex  gap-x-4 justify-around items-center w-max ">
+              <li className="underline mx-4">
+                <Link href={"/myplaylist"} aria-disabled={!userData}  title="my songs">
                   <SlPlaylist size={"20px"} />
                 </Link>
               </li>

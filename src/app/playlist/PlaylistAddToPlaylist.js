@@ -31,7 +31,6 @@ function PlaylistAddToPlaylist({ musicData }) {
     } catch (error) {}
   }
   return (
-    <div className="mt-8">
       <button
       className=" border-white border p-1 "
       onClick={add}
@@ -39,7 +38,6 @@ function PlaylistAddToPlaylist({ musicData }) {
     >
       <IoAddSharp size={"20px"} />
     </button>
-    </div>
   );
 }
 

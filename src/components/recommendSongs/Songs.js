@@ -9,7 +9,7 @@ async function Songs() {
   const { tracks } = await getDataFromSpotify(tokenEndpoint);
 
   return (
-    <div className="bg-gray-800 text-white font-sans pt-12 ">
+    <div className=" text-white font-sans pt-12 ">
       <h1
         style={{ textShadow: "2px 2px 4px rgba(100, 100, 230, 0.9)" }}
         className="bg-gray-800 max-[800px]:flex hidden text-center text-3xl pt-8 justify-around h-full items-center font-mono "
