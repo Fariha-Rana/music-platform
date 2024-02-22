@@ -14,7 +14,7 @@ function AlbumLayout({ moreAlbums }) {
             src={albums.images[0]?.url}
             alt={albums.name}
             className="w-40 h-auto object-cover mb-1"
-            priority={true}
+            property='true'
           />
           <p className="text-gray-400">Total Tracks: {albums?.total_tracks}</p>
           <Link href={albums?.external_urls?.spotify} className="text-green-500 mt-2 block underline" target="_blank" rel="noopener noreferrer" >

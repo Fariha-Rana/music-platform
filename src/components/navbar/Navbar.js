@@ -22,7 +22,7 @@ const Navbar = () => {
               alt="logo"
               src="/next.svg"
               className="w-20 h-auto "
-              priority={true}
+              property='true'
             />
           </Link>
         </li>
@@ -38,7 +38,7 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <div className="flex  sm:gap-x-4 justify-around items-center w-max ">
+            <div className="flex  gap-x-4 justify-around items-center w-max ">
               <li className="underline">
                 <Link href={"/myplaylist"} aria-disabled={!userData}  title="my songs">
                   <SlPlaylist size={"20px"} />

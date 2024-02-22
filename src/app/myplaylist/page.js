@@ -45,6 +45,7 @@ function page() {
                 width={400}
                 src={data.imageurl[index]}
                 alt={song}
+                property='true'
                 className="w-auto max-[550px]:w-full max-[550px]:h-auto  h-20 object-cover rounded-md"
               />
             </div>

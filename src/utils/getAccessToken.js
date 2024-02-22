@@ -18,7 +18,7 @@ export async function getAccessToken() {
   try {
     const response = await fetch(tokenEndpoint, requestOptions);
     const { access_token } = await response.json();
-    // console.log(" Token:");
+    console.log(" Token:");
     return access_token;
   } catch (error) {}
 }

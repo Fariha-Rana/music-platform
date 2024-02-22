@@ -1,9 +1,4 @@
-import { getAccessToken } from "@/utils/getAccessToken";
-import { unstable_cache } from "next/cache";
-
-const _getAccessToken = unstable_cache(getAccessToken, ["access-token"], {
-  revalidate: 1200,
-});
+import { _getAccessToken } from "@/utils/getCachedAccessToken";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);

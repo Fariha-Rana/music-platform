@@ -1,10 +1,4 @@
-"use server";
-import { unstable_cache } from "next/cache";
-import { getAccessToken } from "./getAccessToken";
-
-const _getAccessToken = unstable_cache(getAccessToken, ["access-token"], {
-  revalidate: 1200,
-});
+import { _getAccessToken } from "./getCachedAccessToken";
 
 export async function getDataFromSpotify(tokenEndpoint) {
   try {
