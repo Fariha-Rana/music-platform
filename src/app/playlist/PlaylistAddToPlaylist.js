@@ -1,9 +1,15 @@
 "use client";
 import userSavedData from "@/utils/UserSavedData";
-import { IoAddSharp } from "react-icons/io5";
+
 import useAuth from "@/context/useAuth";
+import { useState } from "react";
+
+import { TiTickOutline } from "react-icons/ti";
+import { IoAddSharp } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 function PlaylistAddToPlaylist({ musicData }) {
+  const [isAdded, setIsAdded] = useState(false);
   const { userData } = useAuth();
 
   const data = {
@@ -21,25 +27,35 @@ function PlaylistAddToPlaylist({ musicData }) {
     e.preventDefault();
 
     if (!userData) {
-      alert("please login first");
+      toast.info("please login first");
       return;
     }
 
+    setIsAdded(true);
+
     try {
-      alert("added");
       await userSavedData.saveMusicinUserPlaylist(data, userData.$id);
     } catch (error) {
-      alert("an error occured, please try again");
+      toast.alert("an error occured, please try again");
     }
   }
   return (
-      <button
-      className=" border-white border p-1 "
-      onClick={add}
-      title="add to wishlist"
-    >
-      <IoAddSharp size={"20px"} />
-    </button>
+    <>
+      {isAdded ? (
+        <span className="border-white border ml-8  p-1">
+          {" "}
+          <TiTickOutline size={"20px"} />
+        </span>
+      ) : (
+        <button
+          className=" border-white border ml-8  p-1"
+          onClick={add}
+          title="add to wishlist"
+        >
+          <IoAddSharp size={"20px"} />
+        </button>
+      )}
+    </>
   );
 }
 

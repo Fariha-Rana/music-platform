@@ -9,7 +9,7 @@ import Loader from "@/components/Loader";
 
 function page() {
   const [albums, setAlbums] = useState(null);
-
+  
   const searchParams = useSearchParams();
   const albumImage = searchParams.get("imageurl");
   let _albumId = usePathname();

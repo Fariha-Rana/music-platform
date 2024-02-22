@@ -1,17 +1,19 @@
 "use client";
 import appwriteAuth from "@/utils/appwriteAuthentication";
 import useAuth from "@/context/useAuth";
+import { toast } from 'react-toastify';
 
 const LogoutPage = () => {
   const { setUserData } = useAuth();
+
   async function _logOut() {
     try {
-      alert("Logout successful");
+      toast.success("Logout successful"); 
       await appwriteAuth.logOut();
       setUserData(null);
       localStorage.removeItem("userData");
     } catch (error) {
-      alert("could not Log out, try again please ");
+      toast.error("Could not Log out, try again please"); 
     }
   }
 

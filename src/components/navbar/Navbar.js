@@ -28,7 +28,7 @@ const Navbar = () => {
         </li>
 
         {!userData ? (
-          <div className="flex justify-end  sm:space-x-4 max-[550px]:flex-col text-nowrap">
+          <div className="flex justify-end  sm:space-x-4 max-[550px]:flex-col text-nowrap m-2">
             <li className="underline">
               <Link href={"/login"}>log in</Link>
             </li>

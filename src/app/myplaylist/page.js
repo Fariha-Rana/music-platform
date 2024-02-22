@@ -4,12 +4,9 @@ import useAuth from "@/context/useAuth";
 import userSavedData from "@/utils/UserSavedData";
 import Image from "next/image";
 import Link from "next/link";
-import { cache } from "react";
+
 import { useEffect, useState } from "react";
 
-const getUserPlaylist = cache(async (id) => {
-  return await userSavedData.getSavedMusicList(id);
-});
 
 function page() {
   const [data, setData] = useState(null);
@@ -17,13 +14,13 @@ function page() {
   const userid = userData?.$id;
 
   async function get() {
-    const _data = await getUserPlaylist(userid);
+    const _data = await userSavedData.getSavedMusicList(userid);
     setData(_data);
   }
 
   useEffect(() => {
     get();
-  }, [userid]);
+  }, []);
 
   if (!data) {
     return <Loader />;
