@@ -28,11 +28,11 @@ const Navbar = () => {
         </li>
 
         {!userData ? (
-          <div className="flex justify-end  sm:space-x-4 max-[550px]:flex-col text-nowrap m-2">
-            <li className="underline">
+          <div className="flex  justify-end text-center max-[550px]:flex-col text-nowrap gap-2 text-white">
+            <li className="underline bg-green-700 rounded-md p-2">
               <Link href={"/login"}>log in</Link>
             </li>
-            <li className="underline">
+            <li className="underline bg-green-700 rounded-md p-2">
               <Link href={"/signup"}>create account</Link>
             </li>
           </div>

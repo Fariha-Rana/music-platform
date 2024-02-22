@@ -13,7 +13,7 @@ export default function AuthProvider({ children }) {
         if (cachedUserData) {
           setUserData(JSON.parse(cachedUserData));
         } else {
-          const fetchedUserData = await userAuth.getCurrentUser();
+          const fetchedUserData = await appwriteAuth.getCurrentUser();
 
           if (fetchedUserData) {
             localStorage.setItem("userData", JSON.stringify(fetchedUserData));

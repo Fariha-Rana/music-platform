@@ -19,7 +19,7 @@ class AppwriteAuth {
       );
 
       if (userAccount) {
-        const data = await this.login({ email, password });
+        const data = await this.login(email, password );
         return data;
       }
     } catch (err) {
@@ -27,7 +27,7 @@ class AppwriteAuth {
     }
   }
 
-  async login({ email, password }) {
+  async login( email, password ) {
     try {
       const loggedinUser = await account.createEmailSession(email, password);
       return loggedinUser;

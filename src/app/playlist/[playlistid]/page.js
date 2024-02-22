@@ -13,15 +13,15 @@ function page() {
   const playlistId = _playlistId.replace(/^\/playlist\//, "");
 
   const fetchPlaylist = async () => {
-  try {
-    const response = await fetch(
-      `${HOST_Name}/playlist/${playlistId}/api/?playlistId=${playlistId}`
-    );
-    const { data } = await response.json();
-    setTracks(data.items);
-  } catch (error) {
-    alert("an error occured, please revisit page")
-  }
+    try {
+      const response = await fetch(
+        `${HOST_Name}/playlist/${playlistId}/api/?playlistId=${playlistId}`
+      );
+      const { data } = await response.json();
+      setTracks(data.items);
+    } catch (error) {
+      alert("an error occured, please revisit page");
+    }
   };
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function page() {
     return <Loader />;
   }
   return (
-    <div className="flex flex-col font-sans mt-24 lg:mt-16 mb-8 min-h-full">
+    <div className="flex flex-col font-sans mt-8 mb-8 min-h-full">
       <div className="rounded-md shadow-md flex flex-col h-full gap-4 w-full">
         <h1 className="text-center text-2xl text-white font-serif">
           Playlist Preview
@@ -40,7 +40,7 @@ function page() {
         {tracks?.map((track, index) => (
           <div
             key={index}
-            className="flex max-[550px]:flex-col  h-full items-center p-4 justify-around border bg-gray-200 border-gray-400 mx-8 min-[651px]:gap-x-2 gap-4"
+            className="flex max-[550px]:flex-col  h-full items-center p-4 justify-around border bg-neutral-200 border-gray-400 mx-8 min-[651px]:gap-x-2 gap-4"
           >
             <div className="w-44 min-[551px]:h-30 ">
               <Image
@@ -48,16 +48,24 @@ function page() {
                 height={400}
                 src={track?.track?.album?.images[0].url}
                 alt={track?.track?.album?.name || "song image"}
-                property='true'
+                property="true"
                 className="w-auto max-[550px]:w-full max-[550px]:h-auto  h-20 object-cover rounded-md"
               />
             </div>
             <div className="flex flex-col w-[20rem] p-1 min-[551px]:h-30 items-center justify-center text-center">
-              <h3 className="text-sm text-wrap">{track.track.name}</h3>
+              <h3 className="text-sm text-wrap">
+                {track.track.name && track.track.name.length > 25
+                  ? track.track.name.substring(0, 25) + "..."
+                  : track.track.name}
+              </h3>
               <p className="text-gray-500 text-sm text-wrap">
                 <b>Artists:</b>{" "}
                 {track?.track?.artists
-                  ?.map((artist) => artist?.name)
+                  ?.map((artist) =>
+                    artist?.name && artist.name.length > 25
+                      ? artist.name.substring(0, 25) + "..."
+                      : artist.name
+                  )
                   .join(", ")}
               </p>
             </div>
@@ -66,30 +74,31 @@ function page() {
               <source src={track?.track?.preview_url} type="audio/mp3" />
             </audio>
 
-            <div className="flex space-x-2 my-2 flex-col text-center">
-              <span className="text-sm  text-green-500 text-nowrap">
-                <Link
-                  href={track?.track?.external_urls?.spotify || "/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  Listen on Spotify
-                </Link>
-              </span>
-              <span className="text-sm text-green-500 text-nowrap">
-                <Link
-                  href={track?.track?.album?.external_urls?.spotify || "/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  See the full Album
-                </Link>
-              </span>
+            <div className="flex gap-2 text-center justify-around items-center">
+              <div className="flex flex-col">
+                <span className="text-sm  text-green-500 text-nowrap">
+                  <Link
+                    href={track?.track?.external_urls?.spotify || "/"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    Listen on Spotify
+                  </Link>
+                </span>
+                <span className="text-sm text-green-500 text-nowrap">
+                  <Link
+                    href={track?.track?.album?.external_urls?.spotify || "/"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    See the full Album
+                  </Link>
+                </span>
+              </div>
+              <PlaylistAddToPlaylist musicData={track.track} />
             </div>
-
-            <PlaylistAddToPlaylist musicData={track.track} />
           </div>
         ))}
       </div>

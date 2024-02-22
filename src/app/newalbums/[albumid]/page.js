@@ -9,7 +9,7 @@ import Loader from "@/components/Loader";
 
 function page() {
   const [albums, setAlbums] = useState(null);
-  
+
   const searchParams = useSearchParams();
   const albumImage = searchParams.get("imageurl");
   let _albumId = usePathname();
@@ -33,10 +33,10 @@ function page() {
     return <Loader />;
   }
   return (
-    <div className="flex flex-col font-sans mt-24 lg:mt-16 mb-8 min-h-screen">
+    <div className="flex flex-col font-sans mt-8 mb-8 min-h-screen">
       <div className="rounded-md shadow-md flex flex-col h-full gap-4 w-full">
-      <h1 className="text-center text-2xl text-white font-serif">
-        Album Preview
+        <h1 className="text-center text-2xl text-white font-serif">
+          Album Preview
         </h1>
         {albums?.map((album, index) => (
           <div
@@ -49,16 +49,26 @@ function page() {
                 height={400}
                 src={albumImage}
                 alt={album?.name}
-                property='true'
+                property="true"
                 className="w-auto max-[550px]:w-full max-[550px]:h-auto  h-20 object-cover rounded-md"
               />
             </div>
 
             <div className="flex flex-col min-[551px]:w-80 min-[551px]:h-20 items-center justify-center text-center">
-              <h3 className="text-sm text-wrap">{album?.name}</h3>
+              <h3 className="text-sm text-wrap">
+                {album?.name && album.name.length > 25
+                  ? album.name.substring(0, 25) + "..."
+                  : album.name}
+              </h3>
               <p className="text-gray-500 text-sm text-wrap">
                 <b>Artists:</b>{" "}
-                {album?.artists?.map((artist) => artist?.name).join(", ")}
+                {album?.artists
+                  ?.map((artist) =>
+                    artist?.name && artist.name.length > 25
+                      ? artist.name.substring(0, 25) + "..."
+                      : artist.name
+                  )
+                  .join(", ")}
               </p>
             </div>
 
@@ -70,7 +80,7 @@ function page() {
               <p className="h-8 text-sm">No preview available</p>
             )}
             <div className="flex justify-between gap-4 items-center ">
-              <span className="text-sm text-nowrap text-green-500">
+              <span className="text-sm text-nowrap my-2 text-green-500">
                 <Link
                   href={album?.external_urls?.spotify || "/"}
                   target="_blank"

@@ -32,7 +32,7 @@ const Login = () => {
       <div
         className={`mx-auto p-20 max-w-full bg-gray-200/50 rounded-xl max-[550px]:m-12`}
       >
-        {error && <p className="text-red-600 mt-12 text-center">{error}</p>}
+        {error && <p className="text-red-600 h-20 text-center">{error}</p>}
         <h2 className="text-center text-lg font-bold leading-tight text-black">
           Create your new account
         </h2>
@@ -41,7 +41,7 @@ const Login = () => {
           className="mt-8 flex flex-col justify-center items-center space-y-2"
         >
           <input
-            type="text"
+            type="name"
             placeholder="enter your nickname"
             className="border rounded-sm border-gray-600 px-2 py-1"
             value={name}
@@ -50,7 +50,7 @@ const Login = () => {
           />
 
           <input
-            type="text"
+            type="email"
             placeholder="enter your email"
             className="border rounded-sm border-gray-600 px-2 py-1"
             value={email}
@@ -59,7 +59,7 @@ const Login = () => {
           />
 
           <input
-            type="passowrd"
+            type="password"
             placeholder="enter your passowrd"
             className="border rounded-sm border-gray-600 px-2 py-1"
             value={passowrd}
@@ -68,7 +68,7 @@ const Login = () => {
           />
           <button
             type="submit"
-            className="inline-flex items-center text-sm justify-center rounded-md bg-primary px-4 py-1 mt-8 font-semibold leading-7 bg-gray-800 text-neutral-100 hover:bg-gray-600 border border-gray-600 "
+            className="inline-flex items-center text-sm justify-center rounded-md bg-primary px-4 py-1 mt-8 font-semibold leading-7 bg-green-700 text-neutral-100 hover:bg-gray-600 border border-gray-600 "
           >
             Log in
           </button>
