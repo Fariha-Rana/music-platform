@@ -43,12 +43,9 @@ function Page() {
             className="flex max-[550px]:flex-col  h-full items-center p-4 justify-around border bg-neutral-200 border-gray-400 mx-8 min-[651px]:gap-x-2 gap-4"
           >
             <div className="w-44 min-[551px]:h-30 ">
-              <Image
-                width={400}
-                height={400}
+              <img
                 src={track?.track?.album?.images[0].url}
                 alt={track?.track?.album?.name || "song image"}
-                priority={true}
                 className="w-auto max-[550px]:w-full max-[550px]:h-auto  h-20 object-cover rounded-md"
               />
             </div>

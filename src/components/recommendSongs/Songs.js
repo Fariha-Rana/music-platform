@@ -30,13 +30,10 @@ async function Songs() {
             className={`flex flex-col justify-center items-center flex-shrink-0 bg-gray-700 m-2 pt-4 rounded-lg  w-64 text-center p-4`}
           >
 
-           <Image
-              height={800}
-              width={800}
+           <img
               src={track?.album?.images[0]?.url}
               alt={track?.name}
               className="w-40 h-auto object-cover mb-1"
-             priority={true}
             />
             <h2 className="text-xs font-semibold p-1 text-center">{track?.name}</h2>
             <p className="text-sm text-gray-500 p-1">

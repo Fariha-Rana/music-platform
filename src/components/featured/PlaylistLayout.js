@@ -8,13 +8,10 @@ function PlaylistLayout({ featuredPlaylist }) {
       {featuredPlaylist?.map((playlist) => (
         <div key={playlist.id} className="flex flex-col justify-center items-center flex-shrink-0 bg-gray-700 p-1 rounded-lg m-2 w-56 ">
           <h2 className="text-lg font-bold py-1 ">{playlist.name}</h2>
-          <Image
-            height={1400}
-            width={1400}
+          <img
             src={playlist.images[0]?.url}
             alt={playlist.name}
             className="w-40 h-auto object-cover mb-1"
-           priority={true}
           />
           <p className="text-gray-400">Total Tracks: {playlist.tracks.total}</p>
           <Link href={playlist?.external_urls?.spotify} className="text-green-500 mt-2 block underline" target="_blank" rel="noopener noreferrer" >

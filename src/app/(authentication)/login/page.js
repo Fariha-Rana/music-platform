@@ -19,6 +19,7 @@ import Link from "next/link";
     try {
       const data = await appwriteAuth.login(email, passowrd);
       setUserData(data)
+      console.log(data)
       router.replace(`/`);
     } catch (error) {
       setError(error.message);

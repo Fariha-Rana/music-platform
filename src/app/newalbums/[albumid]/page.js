@@ -47,12 +47,9 @@ function Page() {
             className="flex max-[550px]:flex-col h-full items-center p-4 justify-between border bg-gray-200 border-gray-400 mx-8 min-[651px]:gap-x-4 gap-4"
           >
             <div className="w-32 min-[551px]:h-20 ">
-              <Image
-                width={400}
-                height={400}
+              <img
                 src={albumImage}
                 alt={album?.name}
-                priority={true}
                 className="w-auto max-[550px]:w-full max-[550px]:h-auto  h-20 object-cover rounded-md"
               />
             </div>

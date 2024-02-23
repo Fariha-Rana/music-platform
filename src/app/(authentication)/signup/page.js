@@ -21,6 +21,7 @@ const Login = () => {
     try {
       const data = await appwriteAuth.createAccount(email, passowrd, name);
       setUserData(data);
+      console.log(data)
       router.replace(`/`);
     } catch (error) {
       setError(error.message);
