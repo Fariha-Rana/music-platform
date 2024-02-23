@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 function PlaylistAddToPlaylist({ musicData }) {
   const [isAdded, setIsAdded] = useState(false);
   const { userData } = useAuth();
-
+  const userid = userData.$userId || userData.$id
   const data = {
     id: musicData?.id,
     imageurl: musicData?.album?.images[0].url,
@@ -34,7 +34,7 @@ function PlaylistAddToPlaylist({ musicData }) {
     setIsAdded(true);
 
     try {
-      await userSavedData.saveMusicinUserPlaylist(data, userData.$userId);
+      await userSavedData.saveMusicinUserPlaylist(data, userid);
     } catch (error) {
       toast.alert("an error occured, please try again");
     }

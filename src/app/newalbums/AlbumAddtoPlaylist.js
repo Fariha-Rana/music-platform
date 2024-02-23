@@ -11,7 +11,7 @@ import { useState } from "react";
 
 function AlbumAddtoPlaylist({ musicData, imageUrl }) {
   const { userData } = useAuth();
-
+  const userid = userData.$userId || userData.$id
   const [isAdded, setIsAdded] = useState(false);
 
   const data = {
@@ -36,7 +36,7 @@ function AlbumAddtoPlaylist({ musicData, imageUrl }) {
     setIsAdded(true);
     
     try {
-      await userSavedData.saveMusicinUserPlaylist(data, userData.$userId);
+      await userSavedData.saveMusicinUserPlaylist(data, userid);
     } catch (error) {}
   }
   return (
