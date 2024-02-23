@@ -14,7 +14,7 @@ function Page() {
   const albumImage = searchParams.get("imageurl");
   let _albumId = usePathname();
   const albumId = _albumId.replace(/^\/newalbums\//, "");
-
+ 
   const fetchPlaylist = async () => {
     try {
       const response = await fetch(
@@ -22,7 +22,10 @@ function Page() {
       );
       const { data } = await response.json();
       setAlbums(data.items);
-    } catch (error) {}
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   useEffect(() => {
