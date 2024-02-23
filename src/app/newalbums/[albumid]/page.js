@@ -14,30 +14,27 @@ function Page() {
   const albumImage = searchParams.get("imageurl");
   let _albumId = usePathname();
   const albumId = _albumId.replace(/^\/newalbums\//, "");
-  console.log(searchParams)
-  console.log(albumImage)
-  console.log(_albumId)
-  console.log(albumId)
- 
-  const fetchPlaylist = async () => {
-    try {
-      const response = await fetch(
-        `${HOST_Name}/newalbums/${albumId}/api?albumid=${albumId}`
-      );
-      const { data } = await response.json();
-      setAlbums(data.items);
-      console.log(data)
-    } catch (error) {
-      console.log(error)
-    }
-  };
 
+  
   useEffect(() => {
+    const fetchPlaylist = async () => {
+      try {
+        alert(`${HOST_Name}/newalbums/api?albumid=${albumId}`);
+        const response = await fetch(
+          `${HOST_Name}/newalbums/api?albumid=${albumId}`
+        );
+        const { data } = await response.json();
+        setAlbums(data.items);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchPlaylist();
   }, []);
 
   if (!albums) {
-    return <Loader />;
+    return <Loader/>;
   }
   return (
     <div className="flex flex-col font-sans mt-8 mb-8 min-h-screen">
@@ -63,16 +60,16 @@ function Page() {
 
             <div className="flex flex-col min-[551px]:w-80 min-[551px]:h-20 items-center justify-center text-center">
               <h3 className="text-sm text-wrap">
-                {album?.name && album.name.length > 25
-                  ? album.name.substring(0, 25) + "..."
+                {album?.name && album.name.length < 20
+                  ? album.name.substring(0, 20) + "..."
                   : album.name}
               </h3>
               <p className="text-gray-500 text-sm text-wrap">
                 <b>Artists:</b>{" "}
                 {album?.artists
                   ?.map((artist) =>
-                    artist?.name && artist.name.length > 25
-                      ? artist.name.substring(0, 25) + "..."
+                    artist?.name && artist.name.length < 10
+                      ? artist.name.substring(0, 10) + "..."
                       : artist.name
                   )
                   .join(", ")}

@@ -4,6 +4,7 @@ export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const albumId = searchParams.get("albumid");
   const accessToken = await _getAccessToken();
+
   try {
     const requestOptions = {
       method: "GET",
@@ -19,7 +20,6 @@ export async function GET(req) {
     const data = await response.json();
     return Response.json({ data });
   } catch (error) {
-    // console.log(error.message);
     throw error;
   }
 }
