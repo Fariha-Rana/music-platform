@@ -11,7 +11,7 @@ function Page() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { userData } = useAuth();
-  const userid = userData?.$id;
+  const userid = userData?.$userId;
 
   async function get() {
     try {

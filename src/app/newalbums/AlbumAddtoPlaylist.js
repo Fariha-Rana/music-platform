@@ -36,7 +36,7 @@ function AlbumAddtoPlaylist({ musicData, imageUrl }) {
     setIsAdded(true);
     
     try {
-      await userSavedData.saveMusicinUserPlaylist(data, userData.$id);
+      await userSavedData.saveMusicinUserPlaylist(data, userData.$userId);
     } catch (error) {}
   }
   return (

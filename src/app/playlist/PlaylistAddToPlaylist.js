@@ -34,7 +34,7 @@ function PlaylistAddToPlaylist({ musicData }) {
     setIsAdded(true);
 
     try {
-      await userSavedData.saveMusicinUserPlaylist(data, userData.$id);
+      await userSavedData.saveMusicinUserPlaylist(data, userData.$userId);
     } catch (error) {
       toast.alert("an error occured, please try again");
     }
