@@ -12,7 +12,7 @@ const Navbar = () => {
   const { userData } = useAuth();
 
   return (
-    <nav className="bg-gray-800 p-4 text-white font-mono">
+    <nav className="bg-gray-800 text-white font-mono">
       <ul className="flex justify-between  items-center lg:justify-around mx-4">
         <li>
           <Link href={"/"}>
