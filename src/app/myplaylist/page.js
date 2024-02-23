@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import { useEffect, useState } from "react";
 
-function page() {
+function Page() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { userData } = useAuth();
@@ -106,4 +106,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

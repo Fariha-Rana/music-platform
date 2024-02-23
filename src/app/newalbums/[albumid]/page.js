@@ -7,7 +7,7 @@ import Image from "next/image";
 import AlbumAddtoPlaylist from "../AlbumAddtoPlaylist";
 import Loader from "@/components/Loader";
 
-function page() {
+function Page() {
   const [albums, setAlbums] = useState(null);
 
   const searchParams = useSearchParams();
@@ -98,4 +98,4 @@ function page() {
     </div>
   );
 }
-export default page;
+export default Page;

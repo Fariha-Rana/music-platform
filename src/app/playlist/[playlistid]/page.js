@@ -7,7 +7,7 @@ import Image from "next/image";
 import PlaylistAddToPlaylist from "../PlaylistAddToPlaylist";
 import Loader from "@/components/Loader";
 
-function page() {
+function Page() {
   const [tracks, setTracks] = useState(null);
   let _playlistId = usePathname();
   const playlistId = _playlistId.replace(/^\/playlist\//, "");
@@ -20,7 +20,7 @@ function page() {
       const { data } = await response.json();
       setTracks(data.items);
     } catch (error) {
-      alert("an error occured, please revisit page");
+      alert("an error occured, please revisit Page");
     }
   };
 
@@ -105,4 +105,4 @@ function page() {
     </div>
   );
 }
-export default page;
+export default Page;
