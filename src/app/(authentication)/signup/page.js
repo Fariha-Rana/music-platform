@@ -70,7 +70,7 @@ const Login = () => {
             type="submit"
             className="inline-flex items-center text-sm justify-center rounded-md bg-primary px-4 py-1 mt-8 font-semibold leading-7 bg-green-700 text-neutral-100 hover:bg-gray-600 border border-gray-600 "
           >
-            Log in
+            Sign up
           </button>
         </form>
         <p className="mt-8">
