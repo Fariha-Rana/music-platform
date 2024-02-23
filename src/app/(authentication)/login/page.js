@@ -19,6 +19,7 @@ import Link from "next/link";
     try {
       const data = await appwriteAuth.login(email, passowrd);
       setUserData(data)
+      console.log("login data",data)
       router.replace(`/`);
     } catch (error) {
       setError(error.message);
@@ -30,7 +31,7 @@ import Link from "next/link";
       <div
         className={`mx-auto p-16 max-w-full bg-gray-200/50 rounded-xl max-[550px]:mx-12`}
       >
-        {error && <p className="text-red-600 w-full  h-20 text-center">{error}</p>}
+        {error && <p className="text-red-600 w-full text-center">{error}</p>}
         <h2 className="text-center mb-4 text-lg font-bold leading-tight text-black">
           Log in
         </h2>
