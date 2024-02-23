@@ -30,7 +30,7 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center w-full h-screen font-sans">
       <div
-        className={`mx-auto p-20 max-w-full bg-gray-200/50 rounded-xl max-[550px]:m-12`}
+        className={`mx-auto lg:p-20 p-4 max-w-full bg-gray-200/50 rounded-xl max-[550px]:m-12`}
       >
         {error && <p className="text-red-600  text-center">{error}</p>}
         <h2 className="text-center text-lg font-bold leading-tight text-black">
