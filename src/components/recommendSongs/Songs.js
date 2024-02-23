@@ -38,7 +38,7 @@ async function Songs() {
               className="w-40 h-auto object-cover mb-1"
              priority={true}
             />
-            <h2 className="text-sm font-semibold p-1 ">{track?.name}</h2>
+            <h2 className="text-xs font-semibold p-1 text-center">{track?.name}</h2>
             <p className="text-sm text-gray-500 p-1">
               by<span className="text-gray-400"> {track?.artists[0].name}</span>
             </p>
