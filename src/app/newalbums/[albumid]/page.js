@@ -19,7 +19,6 @@ function Page() {
   useEffect(() => {
     const fetchPlaylist = async () => {
       try {
-        alert(`${HOST_Name}/newalbums/api?albumid=${albumId}`);
         const response = await fetch(
           `${HOST_Name}/newalbums/api?albumid=${albumId}`
         );
@@ -60,16 +59,16 @@ function Page() {
 
             <div className="flex flex-col min-[551px]:w-80 min-[551px]:h-20 items-center justify-center text-center">
               <h3 className="text-sm text-wrap">
-                {album?.name && album.name.length < 20
-                  ? album.name.substring(0, 20) + "..."
+                {album?.name && album.name.length > 25
+                  ? album.name.substring(0, 25) + "..."
                   : album.name}
               </h3>
               <p className="text-gray-500 text-sm text-wrap">
                 <b>Artists:</b>{" "}
                 {album?.artists
                   ?.map((artist) =>
-                    artist?.name && artist.name.length < 10
-                      ? artist.name.substring(0, 10) + "..."
+                    artist?.name && artist.name.length > 20
+                      ? artist.name.substring(0, 20) + "..."
                       : artist.name
                   )
                   .join(", ")}

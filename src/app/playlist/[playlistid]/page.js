@@ -62,8 +62,8 @@ function Page() {
                 <b>Artists:</b>{" "}
                 {track?.track?.artists
                   ?.map((artist) =>
-                    artist?.name && artist.name.length > 25
-                      ? artist.name.substring(0, 25) + "..."
+                    artist?.name && artist.name.length > 20
+                      ? artist.name.substring(0, 20) + "..."
                       : artist.name
                   )
                   .join(", ")}
