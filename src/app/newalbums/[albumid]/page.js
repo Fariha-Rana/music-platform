@@ -14,11 +14,15 @@ function Page() {
   const albumImage = searchParams.get("imageurl");
   let _albumId = usePathname();
   const albumId = _albumId.replace(/^\/newalbums\//, "");
+  console.log(searchParams)
+  console.log(albumImage)
+  console.log(_albumId)
+  console.log(albumId)
  
   const fetchPlaylist = async () => {
     try {
       const response = await fetch(
-        `${HOST_Name}/newalbums/${albumId}/api/?albumid=${albumId}`
+        `${HOST_Name}/newalbums/${albumId}/api?albumid=${albumId}`
       );
       const { data } = await response.json();
       setAlbums(data.items);
