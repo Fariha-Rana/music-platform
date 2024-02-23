@@ -48,7 +48,7 @@ function page() {
                 height={400}
                 src={track?.track?.album?.images[0].url}
                 alt={track?.track?.album?.name || "song image"}
-                property="true"
+                priority={true}
                 className="w-auto max-[550px]:w-full max-[550px]:h-auto  h-20 object-cover rounded-md"
               />
             </div>

@@ -13,16 +13,16 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 p-4 text-white font-mono">
-      <ul className="flex justify-between  items-center mx-4">
+      <ul className="flex justify-between  items-center lg:justify-around mx-4">
         <li>
           <Link href={"/"}>
             <Image
-              width={20}
-              height={20}
+              width={420}
+              height={420}
               alt="logo"
-              src="/next.svg"
+              src="/logo.webp"
               className="w-20 h-auto "
-              property='true'
+              priority={true}
             />
           </Link>
         </li>

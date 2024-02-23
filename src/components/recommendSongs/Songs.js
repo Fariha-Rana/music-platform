@@ -36,7 +36,7 @@ async function Songs() {
               src={track?.album?.images[0]?.url}
               alt={track?.name}
               className="w-40 h-auto object-cover mb-1"
-              property='true'
+             priority={true}
             />
             <h2 className="text-sm font-semibold p-1 ">{track?.name}</h2>
             <p className="text-sm text-gray-500 p-1">

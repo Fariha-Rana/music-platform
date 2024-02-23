@@ -49,7 +49,7 @@ function page() {
                 height={400}
                 src={albumImage}
                 alt={album?.name}
-                property="true"
+                priority={true}
                 className="w-auto max-[550px]:w-full max-[550px]:h-auto  h-20 object-cover rounded-md"
               />
             </div>
