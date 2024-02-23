@@ -14,7 +14,6 @@ const Login = () => {
     try {
        const data = await appwriteAuth._createAnonymousSession(name);
        setUserData(data)
-       console.log(data)
       router.replace(`/`);
     } catch (error) {
       setError(error.message);
