@@ -1,4 +1,4 @@
-# [Website Url](https://music-platform-six.vercel.app/)
+# [Website Url](https://music-platform-fariha-ranas-projects.vercel.app/)
 
 ## Music Platform
 
